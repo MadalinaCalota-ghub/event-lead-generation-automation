@@ -1,0 +1,620 @@
+{
+    "name": "Integration Apify",
+    "flow": [
+        {
+            "id": 10,
+            "module": "apify:runActorNew",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 11239206
+            },
+            "mapper": {
+                "actorId": "nFJndFXA5zjCTuudP",
+                "runSync": true,
+                "actor_search_type": "user",
+                "inputBodynFJndFXA5zjCTuudP": "{\r\n  \"queries\": \"site:iabilet.ro \\\"concert\\\"\\nsite:iabilet.ro \\\"festival\\\"\\nsite:iabilet.ro \\\"party\\\"\\nsite:iabilet.ro \\\"spectacol\\\"\\nsite:eventim.ro \\\"concert\\\"\\nsite:eventim.ro \\\"festival\\\"\\nsite:eventim.ro \\\"spectacol\\\"\\nsite:livetickets.ro \\\"concert\\\"\\nsite:livetickets.ro \\\"festival\\\"\\nsite:livetickets.ro \\\"party\\\"\\nsite:livetickets.ro \\\"spectacol\\\"\\nsite:eventbook.ro \\\"film\\\"\\nsite:eventbook.ro \\\"festival\\\"\\nsite:ambilet.ro \\\"concert\\\"\\nsite:entertix.ro \\\"concert\\\"\\nsite:entertix.ro \\\"eveniment\\\"\\nsite:facebook.com/events \\\"Alba Iulia\\\"\\nsite:facebook.com/events \\\"Arad\\\"\\nsite:facebook.com/events \\\"Pitesti\\\"\\nsite:facebook.com/events \\\"Bacau\\\"\\nsite:facebook.com/events \\\"Oradea\\\"\\nsite:facebook.com/events \\\"Bistrita\\\"\\nsite:facebook.com/events \\\"Botosani\\\"\\nsite:facebook.com/events \\\"Brasov\\\"\\nsite:facebook.com/events \\\"Braila\\\"\\nsite:facebook.com/events \\\"Bucuresti\\\"\\nsite:facebook.com/events \\\"Buzau\\\"\\nsite:facebook.com/events \\\"Resita\\\"\\nsite:facebook.com/events \\\"Calarasi\\\"\\nsite:facebook.com/events \\\"Cluj-Napoca\\\"\\nsite:facebook.com/events \\\"Constanta\\\"\\nsite:facebook.com/events \\\"Sfantu Gheorghe\\\"\\nsite:facebook.com/events \\\"Targoviste\\\"\\nsite:facebook.com/events \\\"Craiova\\\"\\nsite:facebook.com/events \\\"Galati\\\"\\nsite:facebook.com/events \\\"Giurgiu\\\"\\nsite:facebook.com/events \\\"Targu Jiu\\\"\\nsite:facebook.com/events \\\"Miercurea Ciuc\\\"\\nsite:facebook.com/events \\\"Deva\\\"\\nsite:facebook.com/events \\\"Slobozia\\\"\\nsite:facebook.com/events \\\"Iasi\\\"\\nsite:facebook.com/events \\\"Buftea\\\"\\nsite:facebook.com/events \\\"Baia Mare\\\"\\nsite:facebook.com/events \\\"Drobeta-Turnu Severin\\\"\\nsite:facebook.com/events \\\"Targu Mures\\\"\\nsite:facebook.com/events \\\"Piatra Neamt\\\"\"\r\n}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "setupValidation": {
+                    "result": {
+                        "valid": true,
+                        "fields": []
+                    },
+                    "version": 1,
+                    "configuration": "4f8720cda033b86b"
+                },
+                "restore": {
+                    "expect": {
+                        "memory": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "actorId": {
+                            "mode": "chose",
+                            "label": "Google Search Results Scraper (apify/google-search-scraper)"
+                        },
+                        "runSync": {
+                            "mode": "chose"
+                        },
+                        "actor_search_type": {
+                            "label": "Recently used Actors"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "apify"
+                            },
+                            "label": "Calota's Apify API Token connection (calota.ancamadalina@gmail.com)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:apify2,apify",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "actor_search_type",
+                        "type": "select",
+                        "label": "Search Actors from",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "user",
+                                "store"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "runSync",
+                        "type": "boolean",
+                        "label": "Run synchronously",
+                        "required": true
+                    },
+                    {
+                        "name": "build",
+                        "type": "text",
+                        "label": "Build"
+                    },
+                    {
+                        "name": "timeout",
+                        "type": "uinteger",
+                        "label": "Timeout"
+                    },
+                    {
+                        "name": "memory",
+                        "type": "select",
+                        "label": "Memory",
+                        "validate": {
+                            "enum": [
+                                128,
+                                256,
+                                512,
+                                1024,
+                                2048,
+                                4096,
+                                8192,
+                                16384,
+                                32768
+                            ]
+                        }
+                    },
+                    {
+                        "name": "actorId",
+                        "type": "select",
+                        "label": "Actor",
+                        "required": true
+                    },
+                    {
+                        "name": "inputBodynFJndFXA5zjCTuudP",
+                        "type": "text",
+                        "label": "Input JSON",
+                        "required": true
+                    },
+                    {
+                        "name": "maxTotalChargeUsd",
+                        "type": "number",
+                        "label": "Maximum cost per run"
+                    },
+                    {
+                        "name": "maxItems",
+                        "type": "hidden",
+                        "label": "Maximum charged results"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 16,
+            "module": "apify:fetchDatasetItems",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 11239206
+            },
+            "mapper": {
+                "type": "clean",
+                "limit": "1000",
+                "format": "json",
+                "datasetId": "Od3Hqgdg3dSd72xyE"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0
+                },
+                "setupValidation": {
+                    "result": {
+                        "valid": true,
+                        "fields": []
+                    },
+                    "version": 1,
+                    "configuration": "86094630d07e3148"
+                },
+                "restore": {
+                    "expect": {
+                        "type": {
+                            "mode": "chose",
+                            "label": "Clean"
+                        },
+                        "format": {
+                            "mode": "chose",
+                            "label": "JSON"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "apify"
+                            },
+                            "label": "Calota's Apify API Token connection (calota.ancamadalina@gmail.com)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:apify2,apify",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "datasetId",
+                        "type": "text",
+                        "label": "Dataset ID",
+                        "required": true
+                    },
+                    {
+                        "name": "type",
+                        "type": "select",
+                        "label": "Data transformation",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "clean",
+                                "simplified",
+                                "none"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "format",
+                        "type": "select",
+                        "label": "Format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "json",
+                                "csv",
+                                "html",
+                                "xml",
+                                "rss",
+                                "xlsx"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "type": "uinteger",
+                        "label": "Limit",
+                        "validate": {
+                            "max": 100000,
+                            "min": 1
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "type": "uinteger",
+                        "label": "Offset",
+                        "validate": {
+                            "min": 0
+                        }
+                    },
+                    {
+                        "name": "fields",
+                        "type": "text",
+                        "label": "Fields"
+                    },
+                    {
+                        "name": "omit",
+                        "type": "text",
+                        "label": "Omit Fields"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 17,
+            "module": "google-sheets:addRow",
+            "version": 2,
+            "parameters": {
+                "__IMTCONN__": 9245651
+            },
+            "mapper": {
+                "from": "drive",
+                "mode": "select",
+                "values": {
+                    "0": "{{16.organicResults[].title}}",
+                    "1": "{{16.organicResults[].emphasizedKeywords}}",
+                    "2": "{{16.organicResults[].description}}",
+                    "3": "{{16.organicResults[].url}}",
+                    "8": "{{16.url}}",
+                    "10": "{{16.organicResults[].websiteTitle}}"
+                },
+                "sheetId": "Sheet1",
+                "spreadsheetId": "/1jbKkabrihkS7xfvzNrtAVuqOkRZ19nq3uW5WzUbcTB0",
+                "includesHeaders": true,
+                "insertDataOption": "INSERT_ROWS",
+                "useColumnHeaders": false,
+                "valueInputOption": "USER_ENTERED",
+                "insertUnformatted": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 0
+                },
+                "setupValidation": {
+                    "result": {
+                        "valid": true,
+                        "fields": []
+                    },
+                    "version": 1,
+                    "configuration": "4d6bc447c1c6cf2"
+                },
+                "restore": {
+                    "expect": {
+                        "from": {
+                            "label": "My Drive"
+                        },
+                        "mode": {
+                            "label": "Search by path"
+                        },
+                        "sheetId": {
+                            "label": "Sheet1"
+                        },
+                        "spreadsheetId": {
+                            "path": [
+                                "Centralizator_Evenimente"
+                            ]
+                        },
+                        "includesHeaders": {
+                            "label": "Yes"
+                        },
+                        "insertDataOption": {
+                            "mode": "chose",
+                            "label": "Insert rows"
+                        },
+                        "useColumnHeaders": {
+                            "label": "No"
+                        },
+                        "valueInputOption": {
+                            "mode": "chose",
+                            "label": "User entered"
+                        },
+                        "insertUnformatted": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "google"
+                            },
+                            "label": "My Google connection (calota.ancamadalina@gmail.com)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:google",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "mode",
+                        "type": "select",
+                        "label": "Search Method",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "select",
+                                "fromAll",
+                                "map"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "insertUnformatted",
+                        "type": "boolean",
+                        "label": "Unformatted",
+                        "required": true
+                    },
+                    {
+                        "name": "valueInputOption",
+                        "type": "select",
+                        "label": "Value input option",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "USER_ENTERED",
+                                "RAW"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "insertDataOption",
+                        "type": "select",
+                        "label": "Insert data option",
+                        "validate": {
+                            "enum": [
+                                "INSERT_ROWS",
+                                "OVERWRITE"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "from",
+                        "type": "select",
+                        "label": "Drive",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "drive",
+                                "share",
+                                "team"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spreadsheetId",
+                        "type": "file",
+                        "label": "Spreadsheet Name",
+                        "required": true
+                    },
+                    {
+                        "name": "sheetId",
+                        "type": "select",
+                        "label": "Sheet Name",
+                        "required": true
+                    },
+                    {
+                        "name": "includesHeaders",
+                        "type": "select",
+                        "label": "Table contains headers",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                true,
+                                false
+                            ]
+                        }
+                    },
+                    {
+                        "name": "useColumnHeaders",
+                        "type": "select",
+                        "label": "Use column headers as IDs of the columns",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                true,
+                                false
+                            ]
+                        }
+                    },
+                    {
+                        "name": "values",
+                        "spec": [
+                            {
+                                "name": "0",
+                                "type": "text",
+                                "label": "Titlu eveniment (A)"
+                            },
+                            {
+                                "name": "1",
+                                "type": "text",
+                                "label": "Localitate (B)"
+                            },
+                            {
+                                "name": "2",
+                                "type": "text",
+                                "label": "Data & Ora (C)"
+                            },
+                            {
+                                "name": "3",
+                                "type": "text",
+                                "label": "Locație / Sală (D)"
+                            },
+                            {
+                                "name": "4",
+                                "type": "text",
+                                "label": "Organizator (Firma/Nume) (E)"
+                            },
+                            {
+                                "name": "5",
+                                "type": "text",
+                                "label": "Email Contact / Link Contact (F)"
+                            },
+                            {
+                                "name": "6",
+                                "type": "text",
+                                "label": "Necesită UPFR? (DA/NU) (G)"
+                            },
+                            {
+                                "name": "7",
+                                "type": "text",
+                                "label": "Motivare AI (H)"
+                            },
+                            {
+                                "name": "8",
+                                "type": "text",
+                                "label": "Link Eveniment (I)"
+                            },
+                            {
+                                "name": "9",
+                                "type": "text",
+                                "label": "Data Adăugării / Scanării (J)"
+                            },
+                            {
+                                "name": "10",
+                                "type": "text",
+                                "label": "Sursă / Platformă (K)"
+                            },
+                            {
+                                "name": "11",
+                                "type": "text",
+                                "label": "(L)"
+                            },
+                            {
+                                "name": "12",
+                                "type": "text",
+                                "label": "(M)"
+                            },
+                            {
+                                "name": "13",
+                                "type": "text",
+                                "label": "(N)"
+                            },
+                            {
+                                "name": "14",
+                                "type": "text",
+                                "label": "(O)"
+                            },
+                            {
+                                "name": "15",
+                                "type": "text",
+                                "label": "(P)"
+                            },
+                            {
+                                "name": "16",
+                                "type": "text",
+                                "label": "(Q)"
+                            },
+                            {
+                                "name": "17",
+                                "type": "text",
+                                "label": "(R)"
+                            },
+                            {
+                                "name": "18",
+                                "type": "text",
+                                "label": "(S)"
+                            },
+                            {
+                                "name": "19",
+                                "type": "text",
+                                "label": "(T)"
+                            },
+                            {
+                                "name": "20",
+                                "type": "text",
+                                "label": "(U)"
+                            },
+                            {
+                                "name": "21",
+                                "type": "text",
+                                "label": "(V)"
+                            },
+                            {
+                                "name": "22",
+                                "type": "text",
+                                "label": "(W)"
+                            },
+                            {
+                                "name": "23",
+                                "type": "text",
+                                "label": "(X)"
+                            },
+                            {
+                                "name": "24",
+                                "type": "text",
+                                "label": "(Y)"
+                            },
+                            {
+                                "name": "25",
+                                "type": "text",
+                                "label": "(Z)"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Values in columns",
+                        "metadata": [
+                            [
+                                [
+                                    "Titlu eveniment",
+                                    "Localitate",
+                                    "Data & Ora",
+                                    "Locație / Sală",
+                                    "Organizator (Firma/Nume)",
+                                    "Email Contact / Link Contact",
+                                    "Necesită UPFR? (DA/NU)",
+                                    "Motivare AI",
+                                    "Link Eveniment",
+                                    "Data Adăugării / Scanării",
+                                    "Sursă / Platformă"
+                                ]
+                            ]
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "instant": false,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "eu1.make.com",
+        "notes": []
+    }
+}
